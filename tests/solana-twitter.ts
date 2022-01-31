@@ -2,6 +2,7 @@ import * as anchor from '@project-serum/anchor';
 import { Program } from '@project-serum/anchor';
 import { SolanaTwitter } from '../target/types/solana_twitter';
 import * as assert from "assert";
+import * as bs58 from "bs58";
 
 describe('solana-twitter', () => {
 
@@ -58,7 +59,7 @@ describe('solana-twitter', () => {
 
     // Call the "SendTweet" instruction on behalf of this other user.
     const tweet = anchor.web3.Keypair.generate();
-    await program.rpc.sendTweet('veganism', 'Yay Tofu!', {
+    await program.rpc.sendTweet('bikes', 'team Cannondale', {
         accounts: {
             tweet: tweet.publicKey,
             author: otherUser.publicKey,
@@ -72,8 +73,8 @@ describe('solana-twitter', () => {
 
     // Ensure it has the right data.
     assert.equal(tweetAccount.author.toBase58(), otherUser.publicKey.toBase58());
-    assert.equal(tweetAccount.topic, 'veganism');
-    assert.equal(tweetAccount.content, 'Yay Tofu!');
+    assert.equal(tweetAccount.topic, 'bikes');
+    assert.equal(tweetAccount.content, 'team Cannondale');
     assert.ok(tweetAccount.timestamp);
   });
 
@@ -115,5 +116,51 @@ describe('solana-twitter', () => {
     }
 
     assert.fail('The instruction should have failed with a 281-character content.');
+  });
+
+  it('can fetch all tweets', async () => {
+    const tweetAccounts = await program.account.tweet.all();
+    // The number three comes from the above tweets. It all runs on the local ledger,
+    // so if the local ledger was previously running and had pre-existing state, or
+    // if we added another test to create a tweet before this, this would fail.
+    assert.equal(tweetAccounts.length, 3);
+  });
+
+  it('can filter tweets by author', async () => {
+    const authorPublicKey = program.provider.wallet.publicKey
+    const tweetAccounts = await program.account.tweet.all([
+        {
+            memcmp: {
+                offset: 8, // Discriminator.
+                bytes: authorPublicKey.toBase58(),
+            }
+        }
+    ]);
+
+    assert.equal(tweetAccounts.length, 2);
+    assert.ok(tweetAccounts.every(tweetAccount => {
+      return tweetAccount.account.author.toBase58() === authorPublicKey.toBase58()
+    }));
+  });
+
+  it('can filter tweets by topics', async () => {
+    // The below offset can be compared with the Tweet LEN variable in our
+    // rust program.
+    const tweetAccounts = await program.account.tweet.all([
+        {
+            memcmp: {
+                offset: 8 + // Discriminator.
+                    32 + // Author public key.
+                    8 + // Timestamp.
+                    4, // Topic string prefix.
+                bytes: bs58.encode(Buffer.from('bikes')),
+            }
+        }
+    ]);
+
+    assert.equal(tweetAccounts.length, 2);
+    assert.ok(tweetAccounts.every(tweetAccount => {
+        return tweetAccount.account.topic === 'bikes'
+    }));
   });
 });
