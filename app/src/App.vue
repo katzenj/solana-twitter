@@ -1,11 +1,20 @@
 <script setup>
 import { useRoute } from 'vue-router'
+import { getPhantomWallet, getSolflareWallet } from '@solana/wallet-adapter-wallets'
+import { WalletProvider } from '@solana/wallet-adapter-vue'
+
 import TheSidebar from './components/TheSidebar'
 
 const route = useRoute()
+const wallets = [
+    getPhantomWallet(),
+    getSolflareWallet(),
+]
+
 </script>
 
 <template>
+<wallet-provider :wallets="wallets" auto-connect>
     <div class="w-full max-w-3xl lg:max-w-4xl mx-auto">
 
         <!-- Sidebar. -->
@@ -19,4 +28,5 @@ const route = useRoute()
             <router-view></router-view>
         </main>
     </div>
+    </wallet-provider>
 </template>
