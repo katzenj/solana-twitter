@@ -17,6 +17,7 @@
     "@solana/web3.js": "^1.32.0",
     "autoprefixer": "^10.4.2",
     "core-js": "^3.8.3",
+    "dayjs": "^1.10.7",
     "postcss": "^8.4.5",
     "tailwindcss": "^3.0.18",
     "vue": "^3.2.13",
@@ -45,7 +46,8 @@
       "prettier"
     ],
     "parserOptions": {
-      "parser": "@babel/eslint-parser"
+      "parser": "@babel/eslint-parser",
+      "requireConfigFile": false
     },
     "rules": {
       "vue/script-setup-uses-vars": "error"
