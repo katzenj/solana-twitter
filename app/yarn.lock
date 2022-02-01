@@ -1760,7 +1760,7 @@
   resolved "https://registry.yarnpkg.com/@vue/cli-overlay/-/cli-overlay-5.0.0-rc.2.tgz#3c9325beb6ad01d256cf86905ace22ec354eae41"
   integrity sha512-RbpWGDkf9hH2rkcbM9pgODecyd7nQNUesRyE7g4leqV7If8EilfKa2PU7K++ujw2+0tK9cs2wsXmm6punlt1wQ==
 
-"@vue/cli-plugin-babel@^5.0.0":
+"@vue/cli-plugin-babel@~5.0.0":
   version "5.0.0-rc.2"
   resolved "https://registry.yarnpkg.com/@vue/cli-plugin-babel/-/cli-plugin-babel-5.0.0-rc.2.tgz#fc6776fe2a7694092fe9f35e431e6c5ae8b3465c"
   integrity sha512-r00Oc9qvp1WB0/pvwJ3sIRgMa0Dtha6Z1X1pf7cGCryP9Eh/bAWv4nbOnSwLYSlt8pclNQfoIeYsG9vOjDicvg==
@@ -1772,7 +1772,7 @@
     thread-loader "^3.0.0"
     webpack "^5.54.0"
 
-"@vue/cli-plugin-eslint@^5.0.0":
+"@vue/cli-plugin-eslint@~5.0.0":
   version "5.0.0-rc.2"
   resolved "https://registry.yarnpkg.com/@vue/cli-plugin-eslint/-/cli-plugin-eslint-5.0.0-rc.2.tgz#22a751276041ce6c3b248d893eb12496ee2e48fa"
   integrity sha512-kRP6/618AkV6Y12ht7YIwvWtW9ygku6s/5uySoBCYEegWce82NPxk2A2TPFmqYRsOG50A3XojK+v0QMdMc+VSQ==
@@ -1795,7 +1795,7 @@
   resolved "https://registry.yarnpkg.com/@vue/cli-plugin-vuex/-/cli-plugin-vuex-5.0.0-rc.2.tgz#998939d9edc55149a66adda41e035de985d13ef4"
   integrity sha512-c3cO6+2ojOKUmt7kNGgzA8Ht4FZ+SUnrMc1Vjy8SjdVOrf/SxBcmaQted92H7Y3mx+qkektDstvQ+/nGWIztAw==
 
-"@vue/cli-service@^5.0.0":
+"@vue/cli-service@~5.0.0":
   version "5.0.0-rc.2"
   resolved "https://registry.yarnpkg.com/@vue/cli-service/-/cli-service-5.0.0-rc.2.tgz#74b4855ba0e4feab6f9efa6f1b15f8dc871fbca0"
   integrity sha512-bLmBWWx3E8prGr3tmjRZLhr9o/XOBpuXmXpJydFtLlDeh4g/ZVqALJdheVClHwIijxmP7zrHqVeDlF+MY+mSeg==
