@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 use anchor_lang::solana_program::system_program;
 
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+declare_id!("2QbyGjgHS6dyZtoi7g1M69Fi3mhqpVVoP84g1DLrvnrF");
 
 #[program]
 pub mod solana_twitter {
