@@ -6,4 +6,13 @@ export class Tweet {
     this.topic = accountData.topic;
     this.content = accountData.content;
   }
+
+  get key() {
+    return this.publicKey.toBase58();
+  }
+
+  get author_display() {
+    const author = this.author.toBase58();
+    return author.slice(0, 4) + ".." + author.slice(-4);
+  }
 }
