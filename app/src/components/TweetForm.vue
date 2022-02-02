@@ -66,7 +66,7 @@ const send = async () => {
         <input
           type="text"
           placeholder="topic"
-          class="text-pink-500 rounded-full pl-10 pr-4 py-2 bg-gray-100"
+          class="text-emerald-500 rounded-full pl-10 pr-4 py-2 bg-gray-100"
           :value="effectiveTopic"
           :disabled="forcedTopic"
           @input="topic = $event.target.value"
@@ -75,7 +75,7 @@ const send = async () => {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-5 w-5 m-auto"
-            :class="effectiveTopic ? 'text-pink-500' : 'text-gray-400'"
+            :class="effectiveTopic ? 'text-emerald-500' : 'text-gray-400'"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
@@ -95,7 +95,9 @@ const send = async () => {
         <button
           class="text-white px-4 py-2 rounded-full font-semibold"
           :disabled="!canTweet"
-          :class="canTweet ? 'bg-pink-500' : 'bg-pink-300 cursor-not-allowed'"
+          :class="
+            canTweet ? 'bg-emerald-500' : 'bg-emerald-300 cursor-not-allowed'
+          "
           @click="send"
         >
           Tweet

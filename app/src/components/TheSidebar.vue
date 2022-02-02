@@ -17,7 +17,7 @@ const { connected } = useWallet();
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="h-8 md:h-10 w-8 md:w-10 text-pink-500"
+        class="h-8 md:h-10 w-8 md:w-10 text-emerald-700"
         viewBox="0 0 20 20"
         fill="currentColor"
       >

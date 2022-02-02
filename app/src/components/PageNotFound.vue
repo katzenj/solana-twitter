@@ -3,7 +3,7 @@
     <p>404 — Not Found</p>
     <router-link
       :to="{ name: 'Home' }"
-      class="block text-pink-500 hover:underline mt-2"
+      class="block text-emerald-500 hover:underline mt-2"
     >
       Go back home
     </router-link>
