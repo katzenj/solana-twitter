@@ -11,6 +11,14 @@ const { tweets, loading } = toRefs(props);
 const orderedTweets = computed(() => {
   return tweets.value.slice().sort((a, b) => b.timestamp - a.timestamp);
 });
+const emit = defineEmits(["update:tweets"]);
+
+const onDelete = (deletedTweet) => {
+  const filteredTweets = tweets.value.filter(
+    (tweet) => tweet.publicKey.toBase58() !== deletedTweet.publicKey.toBase58()
+  );
+  emit("update:tweets", filteredTweets);
+};
 </script>
 
 <template>
@@ -20,6 +28,7 @@ const orderedTweets = computed(() => {
       v-for="tweet in orderedTweets"
       :key="tweet.key"
       :tweet="tweet"
+      @delete="onDelete"
     ></tweet-card>
   </div>
 </template>
